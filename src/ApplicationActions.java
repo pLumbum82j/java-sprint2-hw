@@ -31,7 +31,7 @@ public class ApplicationActions {
         MonthlyReport monthlyReport = new MonthlyReport(records);
         monthlyReports.add(monthlyReport);
 
-        System.out.println("Месячный отчёт за " + calendar.calendarmonth(month) + " успешно считан");
+        System.out.println("Месячный отчёт за " + calendar.calendarmonth(month) + " успешно загружен");
     }
 
     void readYearlyReport(String filename) {
@@ -47,7 +47,7 @@ public class ApplicationActions {
             records.add(record);
         }
         yearlyReport = new YearlyReport(records);
-        System.out.println("Годовой отчёт за " + filenames[1] + "г. успешно считан");
+        System.out.println("Годовой отчёт за " + filenames[1] + "г. успешно загружен");
     }
 
 
@@ -65,7 +65,7 @@ public class ApplicationActions {
             System.out.println("Ни один годовой отчёт не был загружен");
             return;
         }
-        statistics.calcMaxSum(yearlyReport);
+        statistics.calcMaxSum(yearlyReport, calendar);
     }
 
     Record makeRecordFromLineM(String monthName, String line) {

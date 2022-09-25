@@ -6,5 +6,6 @@ public class YearlyReport {
     YearlyReport(ArrayList<Record> NewRecords) {
         records = NewRecords;
     }
+
 }
 
