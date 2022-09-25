@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 
-public class MonthlyReport {
+public class YearlyReport {
     ArrayList<Record> records;
 
-    MonthlyReport(ArrayList<Record> NewRecords) {
+    YearlyReport(ArrayList<Record> NewRecords) {
         records = NewRecords;
     }
 }
+
