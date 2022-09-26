@@ -98,17 +98,14 @@ public class Statistics {
     public void reviseCalc(ArrayList<MonthlyReport> monthlyReports, YearlyReport yearlyReport, Calendar calendar) {
         System.out.println("тут будет сверка!");
 
-        boolean isExpense;
         for (MonthlyReport report : monthlyReports) {
             int incomeSumM = 0;
             int expenseSumM = 0;
-            isExpense = false;
-
             monthM = "";
             for (Record record : report.records) {
                 expenseM = 0;
                 expenseM += record.quantity * record.sum_of_one;
-                if (record.is_expense) {
+                if (record.is_expense) { // Проходимся по массиву и  находим false/true is_expense в месяцах и записываем
                     expenseSumM = expenseSumM + expenseM;
                 } else {
                     incomeSumM = incomeSumM + expenseM;
@@ -116,37 +113,43 @@ public class Statistics {
                 monthM = record.monthName;
 
             }
-            getMonthTrue(yearlyReport, calendar, incomeSumM, expenseSumM, monthM);
+            if (expenseSumM > 0) {
+                if (incomeSumM > 0) { add
+                    int expenseSumY = 0;
+                    int incomeSumY = 0;
+                    boolean isExpense = false;
+                    for (Record record : yearlyReport.records) { // пробегаемся по массиву года
+                        if (record.month == calendar.calendarRevise(monthM)) {
+                            if (record.expense) { // записали за 2 итерации false/true expense
+                                expenseSumY = expenseSumY + record.amount;
+                            } else {
+                                incomeSumY = incomeSumY + record.amount;
+                            }
+                        }
 
-        }
-        if (isExpense = true) {
-            System.out.println("Данные за " + monthM + " совпадают");
-        } else {
-            System.out.println("Данные за " + monthM + " НЕ совпадают");
-        }
-    }
+                    }
+                    if (expenseSumY == expenseSumM) { //Сравниваем expense в Годовом и Месячном
+                        if (incomeSumY == incomeSumM) { //Сравниваем income в Годовом и Месячном
+                            isExpense = true;
+                            incomeSumM = 0;
+                            expenseSumM = 0;
+                        } else {
+                            isExpense = false;
+                            incomeSumM = 0;
+                            expenseSumM = 0;
 
+                        }
+                    }
+                    if (isExpense == true) {
+                        System.out.println("Данные за " + monthM + " совпадают");
+                    } else {
+                        System.out.println("Данные за " + monthM + " НЕ совпадают");
+                    }
 
-    public static boolean getMonthTrue(YearlyReport yearlyReport, Calendar calendar, int expenseSumM, int incomeSumM, String monthM) {
-        int expenseSumY = 0;
-        int incomeSumY = 0;
-        boolean isExpense = false;
-        for (Record record : yearlyReport.records) {
-            if (record.month == calendar.calendarRevise(monthM)) {
-                if (record.expense) {
-                    expenseSumY = expenseSumY + record.amount;
-                } else {
-                    incomeSumY = incomeSumY + record.amount;
                 }
-            }
-            if (expenseSumY == expenseSumM) {
-                if (incomeSumY == incomeSumM) {
-                    isExpense = true;
-                } else {
-                    isExpense = false;
-                }
+
             }
         }
-        return isExpense;
+
     }
 }
