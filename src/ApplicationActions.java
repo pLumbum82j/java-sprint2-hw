@@ -50,6 +50,17 @@ public class ApplicationActions {
         System.out.println("Годовой отчёт за " + filenames[1] + "г. успешно загружен");
     }
 
+    void revise(){
+        if (monthlyReports.size() == 0) {
+            System.out.println("Ни один месячный отчёт не был загружен");
+            return;
+        } else if (yearlyReport == null) {
+            System.out.println("Ни один годовой отчёт не был загружен");
+            return;
+        }
+       statistics.reviseCalc(monthlyReports, yearlyReport, calendar);
+    }
+
 
     void printMonthlyReport() {
         if (monthlyReports.size() == 0) {

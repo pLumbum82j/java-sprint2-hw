@@ -18,13 +18,25 @@ public class Calendar {
     }
 
     String calendarmonth(int month) {
-        String mesac = null;
+        String monthNameCalendar = null;
         month = month - 1;
         for (int i = 0; i < year.length; i++) {
             if (i == month) {
-                mesac = year[i];
+                monthNameCalendar = year[i];
             }
         }
-        return mesac;
+        return monthNameCalendar;
     }
+
+    int calendarRevise(String monthName){
+        int monthNumberCalendar = 0;
+        for (int i = 0; i < year.length; i++){
+            if (year[i] == monthName){
+                monthNumberCalendar = i;
+                monthNumberCalendar++;
+            }
+        }
+        return monthNumberCalendar;
+    }
+
 }

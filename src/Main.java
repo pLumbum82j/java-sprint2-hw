@@ -17,8 +17,8 @@ public class Main {
                     case2(applicationActions);
                     break;
                 case 3:
-//                    case3(applicationActions);
-//                    break;
+                    case3(applicationActions);
+                    break;
                 case 4:
                     case4(applicationActions);
                     break;
@@ -42,6 +42,10 @@ public class Main {
 
     public static void case2(ApplicationActions applicationActions) {
         applicationActions.readYearlyReport("resources/y.2021.csv");
+    }
+
+    public static void case3(ApplicationActions applicationActions) {
+        applicationActions.revise();
     }
 
     public static void case4(ApplicationActions applicationActions) {

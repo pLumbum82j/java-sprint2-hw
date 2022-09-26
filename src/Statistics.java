@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 
 public class Statistics {
-    int expense, maxSum;
-    String itemName, month;
+    int expenseM, maxSum;
+    String itemName, monthM;
 
     // Статистика по месячным отчётам
     public void calcMaxSumIncome(ArrayList<MonthlyReport> monthlyReports) { // доход
@@ -13,19 +13,19 @@ public class Statistics {
         for (MonthlyReport report : monthlyReports) {
             maxSum = 0;
             itemName = "";
-            month = "";
+            monthM = "";
             for (Record record : report.records) {
                 if (!record.is_expense) { // Вывести только FALSE
-                    expense = 0;
-                    expense += record.quantity * record.sum_of_one; // Вычислить доход
-                    if (maxSum < expense) { // Вычисляем наибольший доход
-                        maxSum = expense;
+                    expenseM = 0;
+                    expenseM += record.quantity * record.sum_of_one; // Вычислить доход
+                    if (maxSum < expenseM) { // Вычисляем наибольший доход
+                        maxSum = expenseM;
                         itemName = record.item_name;
-                        month = record.monthName;
+                        monthM = record.monthName;
                     }
                 }
             }
-            System.out.println("За " + month + ": " + itemName + " на сумму " + maxSum);
+            System.out.println("За " + monthM + ": " + itemName + " на сумму " + maxSum);
         }
     }
 
@@ -34,19 +34,19 @@ public class Statistics {
         for (MonthlyReport report : monthlyReports) {
             maxSum = 0;
             itemName = "";
-            month = "";
+            monthM = "";
             for (Record record : report.records) {
                 if (record.is_expense) { // Вывести только TRUE
-                    expense = 0;
-                    expense += record.quantity * record.sum_of_one; // Вычислить расход
-                    if (maxSum < expense) { // Вычисляем наибольший расход
-                        maxSum = expense;
+                    expenseM = 0;
+                    expenseM += record.quantity * record.sum_of_one; // Вычислить расход
+                    if (maxSum < expenseM) { // Вычисляем наибольший расход
+                        maxSum = expenseM;
                         itemName = record.item_name;
-                        month = record.monthName;
+                        monthM = record.monthName;
                     }
                 }
             }
-            System.out.println("За " + month + ": " + itemName + " на сумму " + maxSum);
+            System.out.println("За " + monthM + ": " + itemName + " на сумму " + maxSum);
         }
     }
 
@@ -92,5 +92,61 @@ public class Statistics {
         }
         System.out.println("За " + yearName + "г. средний расход за все месяцы  составил: " + (expenseSum / month));
         System.out.println("За " + yearName + "г. средний доход за все месяцы составил: " + (incomeSum / month));
+    }
+
+    // Сверка
+    public void reviseCalc(ArrayList<MonthlyReport> monthlyReports, YearlyReport yearlyReport, Calendar calendar) {
+        System.out.println("тут будет сверка!");
+
+        boolean isExpense;
+        for (MonthlyReport report : monthlyReports) {
+            int incomeSumM = 0;
+            int expenseSumM = 0;
+            isExpense = false;
+
+            monthM = "";
+            for (Record record : report.records) {
+                expenseM = 0;
+                expenseM += record.quantity * record.sum_of_one;
+                if (record.is_expense) {
+                    expenseSumM = expenseSumM + expenseM;
+                } else {
+                    incomeSumM = incomeSumM + expenseM;
+                }
+                monthM = record.monthName;
+
+            }
+            getMonthTrue(yearlyReport, calendar, incomeSumM, expenseSumM, monthM);
+
+        }
+        if (isExpense = true) {
+            System.out.println("Данные за " + monthM + " совпадают");
+        } else {
+            System.out.println("Данные за " + monthM + " НЕ совпадают");
+        }
+    }
+
+
+    public static boolean getMonthTrue(YearlyReport yearlyReport, Calendar calendar, int expenseSumM, int incomeSumM, String monthM) {
+        int expenseSumY = 0;
+        int incomeSumY = 0;
+        boolean isExpense = false;
+        for (Record record : yearlyReport.records) {
+            if (record.month == calendar.calendarRevise(monthM)) {
+                if (record.expense) {
+                    expenseSumY = expenseSumY + record.amount;
+                } else {
+                    incomeSumY = incomeSumY + record.amount;
+                }
+            }
+            if (expenseSumY == expenseSumM) {
+                if (incomeSumY == incomeSumM) {
+                    isExpense = true;
+                } else {
+                    isExpense = false;
+                }
+            }
+        }
+        return isExpense;
     }
 }
