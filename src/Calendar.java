@@ -1,4 +1,7 @@
 public class Calendar {
+    /**
+     * Массив содержащий название месяев в году
+     */
     String[] year = new String[12];
 
     {
@@ -16,10 +19,14 @@ public class Calendar {
         year[11] = "Декабрь";
 
     }
-
+    /**
+     * Поиск названия месяца относительно его значения (номера).
+     * @param month номер месяца который передаётся в метод для поиска
+     * @return Возвращем название месяца после того, как нашли его по индксу в массиве
+     */
     String calendarmonth(int month) {
-        String monthNameCalendar = null;
-        month = month - 1;
+        String monthNameCalendar = null; ///< Переменная в которую мы запишем значение для возврата
+        month = month - 1; ///< Учитываем разность массива с 0, а месяцы в году с 1
         for (int i = 0; i < year.length; i++) {
             if (i == month) {
                 monthNameCalendar = year[i];
@@ -27,13 +34,17 @@ public class Calendar {
         }
         return monthNameCalendar;
     }
-
+    /**
+     * Поиск номера месяца относительно его названия.
+     * @param monthName название месяца который передаётся в метод для поиска
+     * @return Возвращем номер месяца после того, как нашли его по значению (названию) в массиве
+     */
     int calendarRevise(String monthName){
-        int monthNumberCalendar = 0;
+        int monthNumberCalendar = 0; ///< Переменная в которую мы запишем значение для возврата
         for (int i = 0; i < year.length; i++){
             if (year[i] == monthName){
                 monthNumberCalendar = i;
-                monthNumberCalendar++;
+                monthNumberCalendar++; ///< Учитываем разность массива с 0, а месяцы в году с 1
             }
         }
         return monthNumberCalendar;
