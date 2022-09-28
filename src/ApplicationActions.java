@@ -14,6 +14,16 @@ public class ApplicationActions {
     ApplicationActions() {
         monthlyReports = new ArrayList<>();
     }
+
+    /**
+     * Метод проверки и обнуления списков перед записью
+     */
+        public void clear() {
+        if (monthlyReports.size() > 0){
+            monthlyReports.clear();
+        }
+    }
+
     /**
      * Метод считывания месячных отчётов и запись их в память
      * @param filename имя файла месячного отчёта

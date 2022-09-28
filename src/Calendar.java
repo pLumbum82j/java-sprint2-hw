@@ -42,7 +42,7 @@ public class Calendar {
     int calendarRevise(String monthName){
         int monthNumberCalendar = 0; ///< Переменная в которую мы запишем значение для возврата
         for (int i = 0; i < year.length; i++){
-            if (year[i] == monthName){
+            if (year[i].equals(monthName)){
                 monthNumberCalendar = i;
                 monthNumberCalendar++; ///< Учитываем разность массива с 0, а месяцы в году с 1
             }

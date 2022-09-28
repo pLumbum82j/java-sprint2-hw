@@ -1,7 +1,7 @@
 /**
  * «Автоматизация бухгалтерии»
  * @autor Илья Смирнов
- * @version 1.0
+ * @version v1.1
  */
 import java.util.Scanner;
 
@@ -43,6 +43,7 @@ public class Main {
      * Происходит считывание трёх файлов из директории resources - "m.202101.csv, m.202102.csv, m.202103.csv"
      */
     public static void case1(ApplicationActions applicationActions) {
+        applicationActions.clear();
         applicationActions.readMonthlyReport("resources/m.202101.csv");
         applicationActions.readMonthlyReport("resources/m.202102.csv");
         applicationActions.readMonthlyReport("resources/m.202103.csv");

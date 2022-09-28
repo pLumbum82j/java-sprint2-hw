@@ -1,11 +1,10 @@
 public class Record {
 
-    /// Переменные месячного отчёта
-    String monthName, item_name;
-    boolean is_expense;
-    int quantity, sum_of_one;
+    String monthName, itemName;
+    boolean isExpense;
+    int quantity, sumOfOne;
 
-    /// Переменные годового отчёта
+
     int yearName;
     Integer month, amount;
     boolean expense;
@@ -14,17 +13,17 @@ public class Record {
     /**
      * Конструктор Record по месячным отчётам.
      * @param monthName Название месяца
-     * @param item_name Название товара (операции, позиции)
-     * @param is_expense Переменная отвечающая за доход == false / расход == true
+     * @param itemName Название товара (операции, позиции)
+     * @param isExpense Переменная отвечающая за доход == false / расход == true
      * @param quantity количество товара (операций, позиций)
-     * @param sum_of_one стоимость одной единицы товара (операции, позиции)
+     * @param sumOfOne стоимость одной единицы товара (операции, позиции)
      */
-    public Record(String monthName, String item_name, boolean is_expense, int quantity, int sum_of_one) {
+    public Record(String monthName, String itemName, boolean isExpense, int quantity, int sumOfOne) {
         this.monthName = monthName;
-        this.item_name = item_name;
-        this.is_expense = is_expense;
+        this.itemName = itemName;
+        this.isExpense = isExpense;
         this.quantity = quantity;
-        this.sum_of_one = sum_of_one;
+        this.sumOfOne = sumOfOne;
     }
     /**
      * Конструктор Record по годовым отчётам.

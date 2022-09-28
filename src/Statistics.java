@@ -17,12 +17,12 @@ public class Statistics {
             itemName = "";
             monthM = "";
             for (Record record : report.records) {
-                if (!record.is_expense) { ///< Вывести только FALSE
+                if (!record.isExpense) { ///< Вывести только FALSE
                     expenseM = 0;
-                    expenseM += record.quantity * record.sum_of_one; ///< Вычислить доход
+                    expenseM += record.quantity * record.sumOfOne; ///< Вычислить доход
                     if (maxSum < expenseM) { ///< Вычисляем наибольший доход
                         maxSum = expenseM;
-                        itemName = record.item_name;
+                        itemName = record.itemName;
                         monthM = record.monthName;
                     }
                 }
@@ -41,12 +41,12 @@ public class Statistics {
             itemName = "";
             monthM = "";
             for (Record record : report.records) {
-                if (record.is_expense) { /// < Вывести только TRUE
+                if (record.isExpense) { /// < Вывести только TRUE
                     expenseM = 0;
-                    expenseM += record.quantity * record.sum_of_one; ///< Вычислить расход
+                    expenseM += record.quantity * record.sumOfOne; ///< Вычислить расход
                     if (maxSum < expenseM) { ///< Вычисляем наибольший расход
                         maxSum = expenseM;
-                        itemName = record.item_name;
+                        itemName = record.itemName;
                         monthM = record.monthName;
                     }
                 }
@@ -111,13 +111,13 @@ public class Statistics {
         System.out.println("Результаты сверки отчётов:");
 
         for (MonthlyReport report : monthlyReports) {
-            int expenseSumM = 0; ///<  expense меячного отчёта - true
-            int incomeSumM = 0; ///<  income меячного отчёта - false
+            int expenseSumM = 0; ///<  expense месячного отчёта - true
+            int incomeSumM = 0; ///<  income месячного отчёта - false
             monthM = "";
             for (Record record : report.records) {
                 expenseM = 0;
-                expenseM += record.quantity * record.sum_of_one;
-                if (record.is_expense) { ///< Проходимся по массиву и  находим true/false в is_expense месяца и записываем
+                expenseM += record.quantity * record.sumOfOne;
+                if (record.isExpense) { ///< Проходимся по массиву и  находим true/false в is_expense месяца и записываем
                     expenseSumM = expenseSumM + expenseM;
                 } else {
                     incomeSumM = incomeSumM + expenseM;
